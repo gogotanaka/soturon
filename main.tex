@@ -11,6 +11,7 @@
 \usepackage{theorem}
 \usepackage{here}
 \theorembodyfont{\normalfont}
+\newtheorem{definition}{Definition}[chapter]
 \newtheorem{thm}{Theorem}[chapter]
 \newtheorem{prop}{Proposition}[chapter]
 \newtheorem{lem}{Lemma}[chapter]
@@ -39,16 +40,11 @@ abst
 %
 \chapter{序論}
 \section{背景}\label{chapint}
-例えば$n$個の質点に関する多自由度系の振動と呼ばれる物理現象（空気抵抗がありそれぞれがバネで繋がっている）などは以下のような運動方程式を生じさせる.
+$n$個の質点に関する多自由度系の振動と呼ばれる物理現象（空気抵抗がありそれぞれがバネで繋がっている）は以下のような運動方程式を生じさせる.
 
 \begin{Eqnarray*}
 M\frac{d^2y}{dt^2} + C\frac{dy}{dt} + Ky = y(t)
 \end{Eqnarray*}
-
-
-\begin{equation}\left\{\arraycolsep 0.14em\begin{array}{rcll}
-M\frac{d^2y}{dt^2} + C\frac{dy}{dt} + Ky = y(t)
-\end{array}\right.\label{11}\end{equation}
 
 
 $M$は質量行列と呼ばれ質点の質量を対角線上に並べた対角行列, $C$は減衰行列と呼ばれ空気抵抗などの速さと力の関係を表す行列, $K$は剛体行列と呼ばれ変位と力を関係を表す行列である. この運動方程式を解く際には以下の二次固有値問題を解く必要性が生じる.
@@ -61,505 +57,187 @@ $M$は質量行列と呼ばれ質点の質量を対角線上に並べた対角�
 
 \section{問題}\label{chapint}
 
-問題を一般の形で表すと $P(\lambda)$ を$d$次元の$n\times n$の行列を係数とする行列多項式とし
+この節では本レポートが扱う問題について述べる. 固有値多項式問題とは一般に以下のように定義される.
+
+$P(\lambda)$ を$d$次元の$n\times n$の行列を係数とする行列多項式とし
 
 \begin{Eqnarray*}
 P(\lambda)x = 0
 \end{Eqnarray*}
+をみたすような$\lambda\in\mathbb{C}, x\in\mathbb{C}^n$を見つける事である.
 
+ただし, 本レポートでは行列多項式$P(\lambda)$を一般にdegree-gradedな行列多項式の形に変形する事が出来るという事実を使って[2]
 
-をみたすような$\lambda\in\mathbb{C}, x\in\mathbb{C}^n$ を見つける事である. ただし, 本レポートでは行列多項式$P(\lambda)$を一般にdegree-gradedな行列多項式の形に変形する事が出来るという事実を使って[2]
+\begin{Eqnarray}
+P(\lambda) = A_0\Phi_0(\lambda) + A_1\Phi_1(\lambda) + \cdots + A_d\Phi_d(\lambda)\label{1}
+\end{Eqnarray}
 
-\begin{Eqnarray*}
-P(\lambda) = A_0\Phi_0(\lambda) + A_1\Phi_1(\lambda) + \cdots + A_d\Phi_d(\lambda)\label{11}
-\end{Eqnarray*}
+と表す事にする. ここで$\Phi_j$ はj次の多項式で以下を満たす.
 
 \begin{Eqnarray*}
 \lambda\Phi_j(\lambda) = \alpha\Phi_{j+1}(\lambda) + \beta\Phi_{j}(\lambda) + \gamma\Phi_{j-1}(\lambda)
 \end{Eqnarray*}
-
-\begin{equation}\left\{\arraycolsep 0.14em\begin{array}{rcll}
-\Phi_{-1} \equiv 0\\
-\Phi_{0} \equiv 1
-\end{array}\right.\end{equation}
-
-
-\begin{Eqnarray*}
-\alpha_j = \frac{c_j}{c_{j+1}}
-\end{Eqnarray*}
-
-$c_j$を$\Phi_{j}(\lambda)$の最大次元の項の係数とする.
-
-
-一方，空間方向にのみ離散化を行うと次式が導かれる．
-\begin{equation}\left\{\arraycolsep 0.14em\begin{array}{rcl}
-B\dot{y}(t)&=&-Ay(t)+c\\
-y(0)&=&v
-\end{array}\right.\label{10}
-\end{equation}
-ただし，$A,B\in\mathbb{R}^{n\times n}$，$c,v\in\mathbb{R}^n$，$y(t)\in \left(L^2((0,T])\right)^n$である．
-ここで，$^{\exists}\beta\in\mathbb{R}$，$^{\exists}\theta\in(0,\pi/2)$，$W(B^{-1}A)\subseteq \Sigma_{\beta,\theta}$とする．ただし，
-\begin{Eqnarray*}
-W(A)&=&\{u^*Au; u\in\mathbb{C}^n,\ u^*u=1\}\mbox{,}\\
-\Sigma_{\alpha,\theta}&=&\{z\in\mathbb{C};|\mbox{arg}(z-\alpha)|<\theta\}.
-\end{Eqnarray*}
-式(\ref{10})の多次元常微分方程式の解は，行列$B$が正則であれば次式のようになる．
-\begin{equation}
-y(t)=e^{-tB^{-1}A}v+e^{-tB^{-1}A}\int_0^te^{sB^{-1}A}dsB^{-1}c\nonumber
-\end{equation}
-さらに，行列$A$が正則であれば次式のようになる．
-\begin{equation}
-y(t)=e^{-tB^{-1}A}(v-A^{-1}c)+A^{-1}c\label{sol}
-\end{equation}
-ここで，$A\in\mathbb{R}^{n\times n}$，$v\in\mathbb{R}^n$，$t\in\mathbb{R}$に対して，$e^{-tA}v$という形式の行列指数関数を計算する方法は文献\cite{tme,inexact,efficient,nineteen,rational}で提案されている．大規模行列に対しては，この中でもKrylov部分空間法が有効である．文献\cite{efficient,nineteen}で提案されたArnoldi法(AE法)で計算すると，一般には
-$||tA||_2$が大きいほど収束に必要な反復回数が増加する．また，行列$A$の固有値分布によってはArnoldi法の収束に必要な反復回数が増加するため，全体的な反復回数も増加する．これを避けるために，Shift-invert Arnoldi法(SIAE法)\cite{rational}が提案された．この方法では，収束が$t$にはよらず，行列$A$の固有値分布も改善されるため，収束に必要な反復回数は大幅に減少する\cite{tme, rational}．一方，SIAE法は各反復において$(I+\gamma A)^{-1}v_m$を計算する必要がある．ただし，$\gamma>0$はパラメータ，$v_m\in\mathbb{R}^n$である．このため，$e^{-tA}v$の計算においては，1回の反復に必要な計算コストがAE法に比べて大きくなる．しかし，式(\ref{sol})に現れる行列指数関数は$e^{-tB^{-1}A}v$という形式をしている．これを計算するには，AE法では各反復において$B^{-1}Av_m$，SIAE法では$(I+\gamma B^{-1}A)^{-1}v_m$を計算する必要がある．前者は$Bx=Av_m$という線形方程式を解くことで計算でき，後者は$(I+\gamma B^{-1}A)^{-1}=(B+\gamma A)^{-1}B$より，$(B+\gamma A)x=Bv_m$という線形方程式を解くことで計算できる．よって，このような行列指数関数に対しては，AE法とSIAE法で1回の反復に必要な計算コストがほぼ等しくなるため，SIAE法が適しているといえる．ただし，SIAE法を用いたとしても，各反復に現れる線形方程式は反復法または直接法で解く以外に方法がない．反復法を用いた場合は，内部反復が生まれ，1回の外部反復にかなりの計算時間を必要とする．直接法を用いた場合は，LU分解は1度だけ行えば良いが，分解された行列の疎性がfill inにより低下するため，多くのメモリを必要とする．
-
-本稿では，式(\ref{11})を式(\ref{10})の形に離散化する方法について述べる．その上で，必要な$y(t)$の近似の精度を保障しながら，各反復で現れる線形方程式を，反復法で解の精度を落としながら解くことで，高速化を行うInexact Shift-invert Arnoldi法(ISIAE法)を提案する．
-
-2章では，行列指数関数のためのAE法とSIAE法について述べる．3章では，式(\ref{11})を離散化する方法について述べる．さらに4章では，離散化された方程式をISIAE法で解く方法とその理論的背景について述べ，誤差解析を行う．最後に5章で数値実験の結果を示し，3章，4章で述べた方法の有効性を示す．
-\section{記法}
-本稿では，$||\cdot||=||\cdot||_2$とし、行列$A$に対して$\kappa(A)$を，$A$の2ノルム条件数とする．また，単位行列$I$に対して$I$の$j$列目を$e_j$と表す．
+ただし$\Phi_{-1} \equiv 0$, $\Phi_{0} \equiv 1$で$\alpha_j = \frac{c_j}{c_{j+1}}$を満たし, $c_j$を$\Phi_{j}(\lambda)$の最大次元の項の係数とする.
 %
-\chapter{行列指数関数のためのKrylov部分空間法}\label{chapKry}
-本章では，$A\in\mathbb{R}^{n\times n}$，$v\in\mathbb{R}^n$に対して，$e^{-tA}v$を計算するためのKlylov部分空間法，AE法とSIAE法について述べる．
-\section{AE法}
- $\beta:=||v||$，初期ベクトル$v_1:=v/\beta$としてArnoldi法の反復を行うと，$m$回反復で次式のように変形できる．
-\begin{Eqnarray*}
-AV_m&=&V_mH_m+h_{m+1,m}v_{m+1}e_m^T\\
-V_m^TAV_m&=&H_m
-\end{Eqnarray*}
-ただし，$V_m=[v_1\cdots v_m]\in\mathbb{R}^{n\times m}$は列ベクトルが正規直交する行列，$H_m\in\mathbb{R}^{m\times m}$は上ヘッセンベルグ行列である．これを用いて，次式のように近似する．
-\begin{Eqnarray*}
-e^{-tA}v\approx V_mV_m^Te^{-tA}v=\beta V_mV_m^Te^{-tA}V_me_1&\approx&\beta V_me^{-tV_m^TAV_m}e_1=\beta V_me^{-tH_m}e_1=:V_ma_m(t)
-\end{Eqnarray*}
-この方法による残差$r^{real}_{exp,m}$は以下のようになるから，アルゴリズムにまとめると，Algorithm~\ref{al2}のようになる．ただし，$m_{max}$は最大反復回数である．
-\begin{Eqnarray}
- r^{real}_{exp,m}&:=&-\beta AV_me^{-tH_m}e_1-\beta V_m\dot{a}_m(t)\nonumber\\
-&=&-\beta AV_me^{-tH_m}e_1+\beta V_mH_ma_m(t)\nonumber\\
-&=&-\beta AV_me^{-tH_m}e_1+\beta AV_ma_m(t)-\beta h_{m+1,m}v_{m+1}e_m^Ta_m(t)\nonumber\\
-&=&-\beta h_{m+1,m}v_{m+1}e_m^Ta_m(t)\nonumber
-\end{Eqnarray}
-\begin{algorithm}[t]
-\caption{AE法}
-\begin{algorithmic}\label{al2}
-\REQUIRE $A\in\mathbb{R}^{n\times n}$，$v\in\mathbb{R}^n$，$t\in(0,T]$，$tol_{exp}>0$，$m_{max}\in\mathbb{N}$
-\ENSURE $y_m(t)$ such that $||r^{real}_{exp,m}||\le tol_{exp}$\\
-\STATE $\beta=||v||$，$v_1=v/\beta$
-\FOR{$m=1,2,\cdots,m_{max}$}
-\STATE $u=Av_m$
-\FOR {$k=1,2,\cdots,m$}
-\STATE $h_{k,m}=u^Tv_k$
-\STATE $u=u-h_{k,m}v_k$
-\ENDFOR
-\STATE $h_{m+1,m}=||u||$，$v_{m+1}=u/h_{m+1,m}$
-\STATE $r=\beta |h_{m+1,1}e_me^{-tH_m}e_1|||v_{m+1}||$
-\IF{$r\le tol_{exp}$}
-\STATE $y_m(t)=\beta V_me^{-tH_m}e_1$, break
-\ENDIF
-\ENDFOR
-\end{algorithmic}
-\end{algorithm}
+\chapter{行列多項式の線形化}\label{chapdisc}
+この章では1章で定義した問題設定の式(\ref{11})を線形化という手法で $\mathbb{C}^{nd \times nd}$ の行列に関する固有値問題に還元をすることを考える.
+\section{線形化}\label{secfdm}
 
-この方法による誤差は，$\mu(B):=\lim_{h\rightarrow0+}(||I+hB||-1)/h$とおくと，次式のようになる\cite{efficient}．
-$$||e^{-tA}v-\beta V_me^{-tH_m}e_1||\le 2\beta\frac{||tA||^m}{m!}\max(1,e^{\mu(tA)})$$
-特に，$||tA||$が大きくなるにつれて収束に必要な反復回数が増加する特徴がある．
+\begin{Eqnarray*}
+L_0 =  \left(
+    \begin{array}{cccccc}
+      \beta_0I    & \alpha_0I  \\
+      \gamma_1I   & \beta_1I    & \alpha_1I \\
+                  & \ddots      & \ddots     & \ddots \\
+                  &             & \ddots     & \ddots          & \ddots \\
+                  &             &            & \gamma_{d-2}I   & \beta_{d-2}I    & \alpha_{d-2}I \\
+      \tilde{A}_0 & \tilde{A}_1 & \ldots     & \tilde{A}_{d-3} & \tilde{A}_{d-2} & \tilde{A}_{d-1}
+    \end{array}
+  \right)
+\end{Eqnarray*}
+
+\begin{Eqnarray*}
+L_1 =  \left(
+    \begin{array}{cccc}
+      I &  \\
+        & \ddots \\
+        &        & I  \\
+        &        &   & c_dA_d 
+    \end{array}
+  \right)
+\end{Eqnarray*}
+
+\begin{Eqnarray}
+L(\lambda) = L_0 - L_1 \lambda\label{2}
+\end{Eqnarray}
+
 %
-\section{SIAE法}
-$(I+\gamma A)^{-1},\ \gamma>0$に対してArnoldi法の反復を行うと，$m$回目の反復で次式のように変形できる．
-\begin{Eqnarray}
-(I+\gamma A)^{-1}V_m&=&V_mH_m+h_{m+1,m}v_{m+1}e_m^T\label{1}\\
-V_m^T(I+\gamma A)^{-1}V_m&=&H_m\nonumber
-\end{Eqnarray}
-行列$H_m$が正則なら，式(\ref{1})より次式が成り立つ．
-\begin{Eqnarray*}
-H_m^{-1}&=&V_m^T(I+\gamma A)V_m+h_{m+1,m}V_m^T(I+\gamma A)v_{m+1}e_m^TH_m^{-1}
-\end{Eqnarray*}
-ここで，$H_m^{-1}\approx V_m^T(I+\gamma A)V_m$と近似すれば，$V_m^TAV_m\approx\gamma^{-1}(H_m^{-1}-I)$が得られる．よって，
-これを用いて次式のように近似する．
-$$e^{-tA}v\approx V_mV_m^Te^{-tA}v=\beta V_mV_m^Te^{-tA}V_me_1\approx \beta V_me^{-\frac t{\gamma}(H_m^{-1}-I)}e_1=:V_mb_m(t)$$
-この方法による残差$r^{real}_{exp,m}$は以下のようになるから，アルゴリズムにまとめると，Algorithm~\ref{al3}のようになる．
-\begin{Eqnarray*}
- r^{real}_{exp,m}&:=&-AV_mb_m(t)-V_m\dot{b}_m(t)-AV_mb_m(t)+\frac 1{\gamma}V_m(H_m^{-1}-I)b_m(t)\\
-&=&-\frac 1{\gamma}(I+\gamma A)V_mb_m(t)+\frac 1{\gamma}V_mH_m^{-1}b_m(t)\\
-&=&-\frac 1{\gamma}(I+\gamma A)V_mb_m(t)+\frac 1{\gamma}(I+\gamma A)V_mb_m(t)\\
-&&\hspace{5cm}+\frac1{\gamma}h_{m+1,m}\left(e_m^TH_m^{-1}b_m(t)\right)(I+\gamma A)v_{m+1}\\
-&=&\frac1{\gamma}h_{m+1,m}\left(e_m^TH_m^{-1}b_m(t)\right)(I+\gamma A)v_{m+1}
-\end{Eqnarray*}
-\begin{algorithm}[t]
-\caption{SIAE法}
-\begin{algorithmic}\label{al3}
-\REQUIRE $A\in\mathbb{R}^{n\times n}$，$v\in\mathbb{R}^n$，$t\in(0,T]$，$\gamma>0$，$tol_{exp}>0$，$m_{max}\in\mathbb{N}$
-\ENSURE $y_m(t)$ such that $||r^{real}_{exp,m}||\le tol_{exp}$
-\STATE $\beta=||v||$，$v_1=v/\beta$
-\FOR{$m=1,2,\cdots,m_{max}$}
-\STATE Compute $x$ such that $(I+\gamma A)x=v_m$
-\FOR {$k=1,2,\cdots,m$}
-\STATE $h_{k,m}=x^Tv_k$
-\STATE $x=x-h_{k,m}v_k$
-\ENDFOR
-\STATE $h_{m+1,m}=||x||$，$v_{m+1}=x/h_{m+1,m}$
-\STATE $r=|h_{m+1,m}e_mH_m^{-1}e^{-\frac t{\gamma}(H^{-1}_m-I)}e_1|||(I+\gamma A)v_{m+1}||/\gamma$
-\IF{$r\le tol_{exp}$}
-\STATE $y_m(t)=\beta V_me^{-\frac t{\gamma}(H_m^{-1}-I)}e_1$, break
-\ENDIF
-\ENDFOR
-\end{algorithmic}
-\end{algorithm}
+\chapter{不変部分空間とInvariant Pair}
+\section{不変部分空間}\label{secisiae}
 
-この方法による誤差について，次の命題が成立する\cite{rational,tme}．
-\begin{prop}\label{siaeerr}
-$S_{\rho,\theta}:=\{z\in\mathbb{C};z\in\Sigma_{0,\theta},\ 0<|z|\le \rho\}$， 
-$\Pi_s:=\{\mbox{次数}s\mbox{以下の全て}\mbox{の多項}\\\mbox{式}\}$， 
-$\Gamma^*$を$S_{\rho^*,\theta^*}(\rho^*\ge 1/(1-\sin(\theta^*-\theta)),\ \theta<\theta^*<\pi/2)$を含む円周，
-$g(z):=e^{-\frac t\gamma(z^{-1}-1)}$
-とすると
-\begin{equation}
-W((I+\gamma A)^{-1})\subseteq \overline{S_{\rho,\theta}}\label{20}
-\end{equation}
-ならば，次式が成立する．
-\begin{equation}
-||e^{-tA}v-V_mb_m(t)||\le \frac{1+\beta}{2\pi\sin(\theta^*-\theta)}\min_{p\in\Pi_{m-1}}\int_{\Gamma^*}\left|\frac{g(\lambda)-p(\lambda)}{\lambda}\right||d\lambda|\label{35}
-\end{equation}
+$V$を$\mathbb{C}$上の線形空間，$W$を$V$の部分空間，$f : V \rightarrow V$を線形写像とする．このとき，$f(W) \subset W$ならば，$W$を$f$に関する不変部分空間という．固有空間は不変部分空間である事が一般的に知られている．
+
+
+
+\section{Invariant Pair}\label{secisiae}
+
+
+\begin{definition}
+$(X, H) \in \mathbb{C}^{n\times k} \times \mathbb{C}^{k\times k}$が$P(x)$のinvariant pairであるとは, 
+
+\begin{Eqnarray*}
+\mathbb{P}(X,H) \equiv A_0X\Phi_0(H) + A_1X\Phi_1(H) + \cdots + A_dX\Phi_d(H) = 0
+\end{Eqnarray*}
+を満たす事である.
+\end{definition}
+
+
+
+
+$\chi$ を $X$ の列ベクトルのなす線形空間とすると $\chi$ が $P$ の不変部分空間であるとみなす事ができる.
+
+
+\begin{prop}
+式(\ref{2})のInvariant Pairを$(X, H) \in \mathbb{C}^{nd\times k} \times \mathbb{C}^{k\times k}$とした時, $X$が列フルランクであれば$H$の固有値は式(\ref{2})に対する固有多項式問題の固有値の解である.
 \end{prop}
 \begin{proof}
-$Z:=(I+\gamma A)^{-1}$とおくと，式(\ref{1})を帰納的に用いることにより次式が導かれる．
-\begin{equation}
-Z^kv_1=V_mH_m^ke_1\quad (k=1,\cdots, m-1)\nonumber
-\end{equation}
-よって，$^{\forall}p\in\Pi_{m-1}$に対して次式が成立する．
+$(X, H) \in \mathbb{C}^{nd\times k} \times \mathbb{C}^{k\times k}$は式(\ref{2})のInvariant Pairであるから
 \begin{Eqnarray*}
-e^{-tA}v-V_mb_m(t)&=&g(Z)v-\beta V_mg(H_m)e_1\\
-&=&g(Z)v-p(Z)v+\beta V_mp(H_m)e_1-\beta V_mg(H_m)e_1\\
-&=&\frac 1{2\pi i}\int_{\Gamma^*}(g(\lambda)-p(\lambda))(\lambda I-Z)^{-1}vd\lambda \\
-&&\hspace{3cm}-\frac{\beta}{2\pi i}\int_{\Gamma^*}(g(\lambda)-p(\lambda))(\lambda I-H_m)^{-1}e_1d\lambda\\
-&=&\int_{\Gamma^*}(g(\lambda)-p(\lambda))((\lambda I-Z)^{-1}v-\beta V_m(\lambda I-H_m)^{-1}e_1)d\lambda
+L_0X - L_1XH = 0
 \end{Eqnarray*}
-ただし，2行目から3行目の変形には，Dunford-Taylor integral form\cite[pp.\ 44]{Kato}を用いた．
-
-ここで，$A\in\mathbb{R}^{n\times n}$，$W(A)\subseteq V$を満たす凸閉集合$V$に対して$||(\lambda I-A)^{-1}||\le \mbox{dist}(\lambda,V)^{-1}$\\\cite{Spijker}が成立することと$W(H_m)\subseteq W(Z)$より次式が成立する．
-\begin{equation}
-||e^{-tA}v-V_mb_m(t)||\le\frac 1{2\pi}\int_{\Gamma^*}|g(\lambda)-p(\lambda)|\frac{1+\beta}{\mbox{dist}(\lambda,W(Z))}|d\lambda|\nonumber
-\end{equation}
-さらに，仮定より$\rho^*-\rho\ge \rho^*\sin(\theta^*-\theta)$だから$\mbox{dist}(\lambda,W(Z))\ge \rho-\rho^*\ge \rho^*\sin{(\theta-\theta^*)}$が成立することと，$p\in\Pi_{m-1}$は任意であることから次式が成立し，命題が成立する．
-\begin{equation}
-||e^{-tA}v-V_mb_m(t)||\le\frac {(1+\beta)\rho^*}{2\pi \rho^*\sin{(\theta^*-\theta)}}\min_{p\in\Pi_{m-1}}\int_{\Gamma^*}\left|\frac{g(\lambda)-p(\lambda)}{\lambda}\right||d\lambda|\hspace{2cm}\Box\nonumber
-\end{equation}
-\end{proof}
-\begin{rmk}
-Walshの定理\cite[Theorem 3.1]{tme}より，式(\ref{35})の被積分関数は$m$の増加とともに減少していくことがわかる．また，$W((I+\gamma A)^{-1})\subseteq \overline{S_{\rho,\theta}}$という仮定は，$W(A)\subseteq \Sigma_{\beta,\theta}$であれば適切な$\gamma$を選ぶことにより満たすことができる\cite{rational}．このとき，$\gamma$を$t$の影響を打ち消すような値として選べば，収束に必要な反復回数は$t$によらずに決定できる．
-\end{rmk}
-%
-\chapter{線形発展方程式の離散化}\label{chapdisc}
-\section{有限差分法}\label{secfdm}
-有限差分法により式(\ref{11})を空間方向に離散化すると，式(\ref{10})において，$B=I$となる．ただし，Dirichlet境界条件が与えられているノード$x_i$については，行列$A$，$B$の対応する行を対角成分以外すべて$0$とする．このノードに対して，$\frac{dy_i(t)}{dt}=0$だから，$0=-y_i(t)+c_i$が満たされるように，$c_i=\psi(x_i)$とする．また，Neumann境界条件が与えられているノードについては，ポアソン方程式など時間微分が入っていない方程式と同様に$\frac{\partial u(x,t)}{\partial n}$の情報を$c$に組み込むこととする\cite[pp.\ 203--204]{fdm}．
-\section{有限要素法}
-写像${\boldsymbol{u}}:[0,T]\rightarrow \mathcal{V}_x$を$t\mapsto u(t,\cdot)$と定める．ただし，$\mathcal{V}_x\subseteq L^2(\overline{\Omega})$である．式(\ref{11})を弱形式に変形すると，次式を満たす${\boldsymbol u}\in L^2(0,T;\mathcal{V}_x)$で，$\frac{d{\boldsymbol u}(t)}{dt}\in L^2(0,T;\mathcal{V}_x^{\sharp})$となるものを求める問題となる\cite[pp.\ 373--374]{pde}．
-\begin{equation}\left\{\begin{array}{l}
-\displaystyle{\int_{\Omega}\frac{d{\boldsymbol u}(t)}{dt}vdx=a({\boldsymbol u}(t),v)+l(v)\quad^{\forall} v\in \mathcal{V}_0,\ ^{\forall} t\in(0,T]}\\
-\displaystyle{{\boldsymbol u}(0)=\phi}\\
-\end{array}\right.\\
-\label{14}
-\end{equation}
-ただし，$\mathcal{V}_0:=\{v\in\mathcal{V}_x;\ v=0\ \mbox{on }\partial\Omega_1\}$であり，$a$は双線形形式，$l$は線形汎関数である．例えば，熱方程式の場合には次式のようになる．
+を満たす. この両辺に$H$の固有ベクトル$x$をかけると, $H$の固有値$\lambda$, 固有ベクトル$x$は$Hx = \lambda x$を満たすから,
 \begin{Eqnarray*}
-a({\boldsymbol u}(t),v)&=&-\int_{\Omega}\nabla {\boldsymbol u}(t)\cdot\nabla vdx+\int_{\partial\Omega_2}\tau_1{\boldsymbol u}(t)vdS\\
-l(v)&=&\int_{\partial\Omega_2}\tau_2vdS
+L_0Xx - L_1\lambda Xx = 0
 \end{Eqnarray*}
+であり, Xは列フルランク行列であるから, 
+\begin{Eqnarray*}
+(L_0- L_1\lambda)y = 0
+\end{Eqnarray*} 
+を満たすような$y = Xx \neq 0$であるから, $\lambda$は式(\ref{2})に対する固有多項式問題の固有値の解である.
 
-有限次元空間$\mathcal{V}_{h}$を$\mathcal{V}_{h}:=\mbox{span}\{\eta_1,\cdots,\eta_{N(h)}\}$と定める．ここで，$h>0$はパラメータ，$N(h)\in\mathbb{N}$であり，$\eta_i$は$\eta_i\in\mathcal{V}_0$を満たす区分多項式である．この空間$\mathcal{V}_h$を用いて式(\ref{14})を離散化すると，次式を満たす${\boldsymbol u}_h\in\{u=\sum_{j=1}^{N(h)}y_j\eta_j;\ y_j\in L^2(0,T;\mathcal{V}_x),\ \frac{dy_j(t)}{dt}\in L^2(0,T;\mathcal{V}_x^{\sharp})\}$を求める問題となる．\\
-\begin{numcases}
-\:\:\displaystyle{\int_{\Omega}\frac{d{\boldsymbol u}_h(t)}{dt}\eta_idx=a({\boldsymbol u}_h(t),\eta_i)+l(\eta_i)}\quad^{\forall}i=1,\cdots,N(h),\ ^{\forall}t\in(0,T]\label{15}\\
-\:\:\displaystyle{{\boldsymbol u}_h(0)=\phi}\nonumber
-\end{numcases}
-ここで，(\ref{15})の左辺は次式のようになる．
-\begin{equation}
-\int_{\Omega}\frac{d{\boldsymbol u}_h(t)}{dt}\eta_idx=\sum_{j=1}^{N(h)}\frac{dy_j(t)}{dt}\int_{\Omega}\eta_j\eta_idx\label{30}
-\end{equation}
-式(\ref{30})の右辺は$\sum_{j=1}^{N(h)}a(\eta_j,\eta_i)y_j(t)+l(\eta_i)$と変形すれば，$y=[y_1,\cdots,y_{N(h)}]^T$として，式(\ref{10})が導かれる\cite{matlabfem,fem}．ただし，Dirichlet境界条件が与えられているノードについては\ref{secfdm}節と同様に扱うこととする．
-%
-\chapter{ISIAE法}
-\section{ISIAE法}\label{secisiae}
-\ref{chapdisc}章で述べた方法により離散化された式(\ref{10})の解(\ref{sol})は，\ref{chapKry}章において行列$A$を行列$B^{-1}A$に置き換えることで計算できる．$W(B^{-1}A)\subseteq \Sigma_{\beta,\theta}$であるから，SIAE法において式(\ref{20})で表される仮定は常に成り立つ．\ref{chapKry}章の2つの方法を比較すると，\ref{chapint}節で述べたように，SIAE法が適している．SIAE法では各反復において$(I+\gamma B^{-1}A)^{-1}v_m$を計算する必要がある．この値は，一般には線形方程式$(B+\gamma A)x=Bv_m$を解くことによって得られる．$B=I$，かつ，$A$がToeplitz行列である時は，$I+\gamma A$の逆行列を精度を落として構成することで，高速に解くことが出来る\cite{tme, inexact}．しかし，一般の行列に対しては，反復法または直接法で解く以外に方法はないため，かなりの計算コスト，メモリ，またはその両方が必要である．そこで，我々は，線形方程式を解く部分にかかる計算コストを少なくすることを考える．概略としては，まず，最初の外部反復に現れる線形方程式の解の精度を，必要な$y(t)$の近似の精度に応じて決定する．その後の外部反復においては，1つ前の外部反復で計算した値を用いて精度を決定していく．この精度は反復ごとに悪くなっていくから，外部反復が進むにつれて1回の外部反復に必要な計算コストは減少していく．具体的には以下のようにして精度を決定すればよい．
+\begin{prop}
+式(\ref{2})のInvariant Pairを$(Z, H) \in \mathbb{C}^{nd\times k} \times \mathbb{C}^{k\times k}$とすると, $Z$の上から$d$分割した時の最も上のブロック行列を$Z_0$とすると
 
-$m$回目の外部反復において$(B+\gamma A)x_m=Bv_m$を$x_m$について解いた時に生じる誤差を$f_m:=x_m-\tilde{x}_m$とし，$F_m:=[f_1 \cdots f_m]$とする．さらに，$r_{sys,m}:=Bv_m-(B+\gamma A)\tilde{x}_m$（残差ベクトル）とし，$R_m:=[r_{sys,1}\cdots r_{sys,m}]$，$\beta=||v-A^{-1}c||$，$v_1=(v-A^{-1}c)/{\beta}$とすると，$m$回の外部反復を行うことにより，次が得られる．
-\begin{Eqnarray}
-(B+\gamma A)^{-1}BV_m-F_m&=&V_mH_m+h_{m+1,m}v_{m+1}e_m^T\label{9}\\
-BV_m+R_m&=&(B+\gamma A)V_mH_m+h_{m+1,m}(B+\gamma A)v_{m+1}e_m^T\nonumber\\
-BV_mH_m^{-1}+R_mH_m^{-1}&=&(B+\gamma A)V_m+h_{m+1,m}(B+\gamma A)v_{m+1}e_m^TH_m^{-1}\label{3}
-\end{Eqnarray}
-ここで，行列$V_m$，$H_m$は式(\ref{1})のものと形は同じだが，$(B+\gamma A)x_m=Bv_m$を精度を落として計算した結果として得られる値であるから，値は異なることに注意する．この行列$V_m$，$H_m$に対して，以下のように近似する．
-\begin{equation}
-H_m^{-1}\approx V_m^T(I+\gamma B^{-1}A)V_m\mbox{,}\label{5}
-\end{equation}
-\begin{equation}
-y(t)\approx \beta V_me^{-\frac t{\gamma}(H_m^{-1}-I)}e_1+A^{-1}c:=V_mc_m(t)+A^{-1}c\label{6}
-\end{equation}
+\begin{Eqnarray*}
+Z = V_m(Z_0, H)
+\end{Eqnarray*}
+と表す事ができる. ただし$V_m$は
 
-この近似を，多次元微分方程式(\ref{10})の解の近似と考えて残差$r_{exp,m}^{real}$を計算すると，次式のようになる．
-\begin{Eqnarray}
-r_{exp,m}^{real}&:=&-AV_mc_m(t)-AA^{-1}c+c-BV_m\dot{b}_m(t)\nonumber\\
-&=&-AV_mc_m(t)+\frac 1{\gamma}BV_m(H_m^{-1}-I)c_m(t)\nonumber\\
-&=&-\frac 1{\gamma}(B+\gamma A)V_mc_m(t)+\frac 1{\gamma}BV_mH_m^{-1}c_m(t)\nonumber\\
-&=&-\frac 1{\gamma}(B+\gamma A)V_mc_m(t)+\frac 1{\gamma}(B+\gamma A)V_mc_m(t)\nonumber\\
-&&+\frac1{\gamma}h_{m+1,m}\left(e_m^TH_m^{-1}c_m(t)\right)(B+\gamma A)v_{m+1}-\frac1{\gamma}R_mH_m^{-1}c_m(t)\quad(\because\mbox{式}(\ref{3}))\nonumber\\
-&=&\frac1{\gamma}h_{m+1,m}\left(e_m^TH_m^{-1}c_m(t)\right)(B+\gamma A)v_{m+1}-\frac1{\gamma}R_mH_m^{-1}c_m(t)\nonumber
-\end{Eqnarray}
-よって，次式が成り立つ．
-\begin{Eqnarray}
-||r_{exp,m}^{real}||&\le& \frac1{\gamma}\left|h_{m+1,m}\left(e_m^TH_m^{-1}c_m(t)\right)\right|||(B+\gamma A)v_{m+1}||+\frac1{\gamma}||R_mH_m^{-1}c_m(t)||\label{2}
-\end{Eqnarray}
-ここで，次の命題が成り立つ．
-\begin{prop}\label{prop1}
-$f(z):=\beta z^{-1}e^{-\frac t{\gamma}(z^{-1}-1)}$とおく．$H_m$を正方な上ヘッセンベルグ行列とし
-\begin{equation}
-W(H_m)\subset \{z\in\mathbb{C};Re(z)>0\}\label{12}
-\end{equation}
-と仮定すると，ある定数$K>0$と$0<\lambda<1$が存在して，次式が成立する．
-\begin{equation}
-\left|\left(f(H_m)\right)_{i,j}\right|<K\lambda^{i-j}\quad(i\ge j)\label{4}
-\end{equation}
+\begin{Eqnarray*}
+V_m(X, H) \equiv \left(
+    \begin{array}{c}
+      X \\
+      X\Phi_1(H) \\
+      \vdots   \\
+      X\Phi_{m-1}(H)
+    \end{array}
+  \right)
+\end{Eqnarray*}
+と定義する.
 \end{prop}
-\begin{proof}
-$H_m$と$f$はBenziら\cite{decay}のTheorem 11の仮定を満たす．実際，$W(H_m)$は有界凸だから，$W(H_m)\subset\mathcal{F}\subset \{z\in\mathbb{C};Re(z)>0\}$を満たす単連結なコンパクト集合で境界がJordan閉曲線になる$\mathcal{F}$を取ることができる．Riemannの写像定理より，$\bar{\mathbb{C}}\backslash \mathcal{F}\ (\bar{\mathbb{C}}=\mathbb{C}\cup\{\infty\})$から$\{w\in\bar{\mathbb{C}};\ |w|>\rho\}\ (\rho>0)$への全射な等角像$\Phi$(すなわち双正則写像\cite[pp.\ 137--138]{complex})で，$\Phi(\infty)=\infty,\ \lim_{z\rightarrow\infty}(\Phi(z)/z)=1$を満たすものが存在する\cite{decay}．$\partial\mathcal{F}$はJordan閉曲線であるから，Carath\'{e}odoryの定理\cite{caratheodory}より，この写像は$\overline{\bar{\mathbb{C}}\backslash \mathcal{F}}$に，位相同型写像として拡張できる．ここで，$\Phi$の逆写像を$\Psi$とする．$\Psi$は連続だから，$R_0>\rho$で，$\Psi\left(\{w\in\bar{\mathbb{C}};\ |w|=R_0\}\right)$のJordan領域が$0$を含まないような$R_0$が存在する．よって，このJordan領域を$I(C_{R_0})$とすると，$I(C_{R_0})\subseteq\bar{\mathbb{C}}\setminus\{0\}$となる．$f$は$\mathbb{C}\setminus\{0\}$で正則だから，$I(C_{R_0})$でも正則である．$H_m$は上ヘッセンベルグであるから，Benziら\cite{decay}のTheorem 11より命題が成立する．$\Box$
+
+
+\begin{prop}
+\end{prop}
+
+(2)のInvariant Pair $(X, H) \in \mathbb{C}^{n\times k} \times \mathbb{C}^{k\times k}$ の$H$の固有値は(1)の固有値でもある.
 \end{proof}
-\begin{rmk}
-Proposition \ref{prop1}は，式(\ref{12})で表される仮定が満たされれば，$f(H_m)$がヘッセンベルグ行列に近い形となることを示している．また，$K$と$\lambda$は$\mathcal{F}$のみに依存する．
-\end{rmk}
+Proposition \ref{prop1}
 
-Proposition \ref{prop1}より，式(\ref{2})の第1項目は次式のようになる．
-\begin{Eqnarray*}
-&&\frac1{\gamma}\left|h_{m+1,m}\left(e_m^Tf(H_m)e_1\right)\right|||(B+\gamma A)v_{m+1}||\\
-&\le&\frac 1{\gamma}|h_{m+1,m}|\left|\left(f(H_m)\right)_{m,1}\right|||(B+\gamma A)||||v_{m+1}||\\
-&\le&\frac 1{\gamma}|h_{m+1,m}|||(B+\gamma A)||K\lambda^{m-1}
-\end{Eqnarray*}
-ここで，次式が成立する．
-\begin{Eqnarray*}
-|h_{m+1,m}|&=&||(B+\gamma A)^{-1}Bv_m-f_m-h_{1,n}v_1-\cdots-h_{m,m}v_m||\\
-&\le&||(B+\gamma A)^{-1}Bv_m||+||f_m||,\\
-||f_m||&\le&||(B+\gamma A)^{-1}||||r_{sys,m}||
-\end{Eqnarray*}
-よって，
-\begin{equation}
-||r_{sys,m}||\le\delta\quad(\delta>0)\label{13}
-\end{equation}
-とすると，次式が成立する．
-\begin{Eqnarray*}
-&&\frac1{\gamma}\left|h_{m+1,m}\left(e_m^Tf(H_m)e_1\right)\right|||(B+\gamma A)v_{m+1}||\\
-&\le&\frac 1{\gamma}(||B||+\delta)\kappa(B+\gamma A)K\lambda^{m-1}
-\end{Eqnarray*}
-よって，式(\ref{2})の第1項目は$m$の増加とともに任意に小さくなる．
+\chapter{高次元のニュートン法}
 
-上の議論では式(\ref{12})と式(\ref{13})の2つを仮定している．式(\ref{13})に関しては，$m$回目の外部反復において，これを満たすように線形方程式$(B+\gamma A)x_m=Bv_m$を解けばよいから特に問題はない．式(\ref{12})を保証するために，次の補題を利用する．
-\begin{lem}
-$A$を正方行列とし，$A^{sym}:=(A+A^T)/2$，$A^{skew}:=(A-A^T)/2$とすると，次式が成立する．
-\begin{equation}
-W(A)\subseteq W(A^{sym})+W(A^{skew})\nonumber
-\end{equation}
-ここで，$W(A^{sym})\subseteq\mathbb{R}$，$W(A^{skew})\subseteq i\mathbb{R}$である．
-\end{lem}
-\begin{proof}
-$x\in W(A)$とすると，$^{\exists} u\in\mathbb{C}$に対して次式が成立する．
-\begin{equation}
-x=u^*Au=u^*A^{sym}u+u^*A^{skew}u\in W(A^{sym})+W(A^{skew})\nonumber
-\end{equation}
-後半部分は，$A^{sym}$は対称行列，$A^{skew}$は歪対称行列であることから得られる．$\Box$
-\end{proof}
-これより，行列$H^{sym}_m=(H_m+H_m^T)/2$の最小固有値が正になれば，式(\ref{12})で表される仮定が満たされることがわかる．よって，各外部反復において，行列$H^{sym}_m$の最小固有値が正になっているかを確認すればよい．実際，$F_m=O$であれば，$W(H_m)\subseteq W((I+\gamma B^{-1}A)^{-1})\subset\{z\in\mathbb{C};Re(z)>0\}$だから，正にならない場合，$\delta$をより小さくし，内部反復の精度を上げるか，$\gamma$を小さくし，行列$(I+\gamma B^{-1}A)^{-1}$の値域がより原点から離れるようにすればよい．
-\begin{rmk}
-$W(B^{-1}A)\subset \Sigma_{\beta,\theta}$より，$^{\forall} x\in W(B^{-1}A)$に対して$^{\exists}\alpha>0$，$^{\exists}\phi\in(0,\theta)$，$x=\beta+\alpha e^{i\phi}$だから，$^{\forall} u\in\mathbb{C}^n$，$||u||=1$に対して次式が成立する．
-\begin{Eqnarray*}
-&&Re\left(u^*(I+\gamma B^{-1}A)^{-1}u\right)\\
-&=&Re\left(u^*(I+\gamma B^{-1}A)^{-*}u\right)\\
-&=&Re\left(u^*(I+\gamma B^{-1}A)^{-*}(I+\gamma B^{-1}A)(I+\gamma B^{-1}A)^{-1}u\right)\\
-&=&Re\left(\{(I+\gamma B^{-1}A)^{-1}u\}^*(I+\gamma B^{-1}A)\{(I+\gamma B^{-1}A)^{-1}u\}\right)\\
-&=&||(I+\gamma B^{-1}A)^{-1}u||^2Re\left(1+\gamma\frac{\{(I+\gamma B^{-1}A)^{-1}u\}^*B^{-1}A\{(I+\gamma B^{-1}A)^{-1}u\}}{||(I+\gamma B^{-1}A)^{-1}u||^2}\right)\\
-&=&||(B+\gamma A)^{-1}Bu||^2Re\left(1+\gamma(\beta+\alpha e^{i\phi})\right)\quad(^{\exists}\alpha>0, ^{\exists}\phi\in(0,\theta))
-\end{Eqnarray*}
-よって，$1+\gamma\beta>0$となるように$\gamma$を選べば次式が成立する．
-\begin{Eqnarray*}
-Re(u^*(I+\gamma B^{-1}A)^{-1}u)&\ge&\sigma_{min}((B+\gamma A)^{-1}B)^2|1+\gamma\beta|
-\end{Eqnarray*}
-ただし，$\sigma_{min}(A)$は行列$A$の最小特異値である．よって，
- $\sigma_{min}((B+\gamma A)^{-1}B)^2|1+\beta\gamma|>||F_m||$ならば，$^{\forall} u\in\mathbb{C}^n,\ ||u||=1$に対して，次式が成立する．
-\begin{Eqnarray*}
-Re(u^*H_mu)&=&Re\left(u^*\left(V_m^T(I+\gamma B^{-1}A)^{-1}V_m)-V_m^TF_m\right)u\right)\\
-&\ge&Re(u^*V_m^T(I+\gamma B^{-1}A)^{-1}V_mu)-|u^*V_m^TF_mu|\\
-&\ge&Re(u^*V_m^T(I+\gamma B^{-1}A)^{-1}V_mu)-||F_m||\\
-&\ge&\sigma_{min}((B+\gamma A)^{-1}B)^2|1+\beta\gamma|-||F_m||\quad(\because ||V_mu||^2=u^*V_m^TV_mu=1)\\
-&>&0
-\end{Eqnarray*}
-ここで，$||F_m||\le\sqrt{m}\max_{1\le j\le m}{||f_j||}$
-が成立するから，$j=1,\cdots,m$に対し次式が成立すれば仮定は満たされる．
-\begin{equation}
-||f_j||<\frac{\sigma_{min}((B+\gamma A)^{-1}B)^2|1+\gamma\beta|}{\sqrt{m_{max}}}\nonumber
-\end{equation}
-$||f_j||\le ||(B+\gamma A)^{-1}||||r_j||\ (j=1,\cdots m)$より，$||r_j||$に対して次式が成立すればよい．
-\begin{equation}
-||r_j||\le \frac{|1+\beta\gamma|}{\sqrt{m_{max}}||(B+\gamma A)^{-1}||||B^{-1}(B+\gamma A)||^2}\label{21}
-\end{equation}
-よって，式(\ref{21})を満たすように$\delta$を定めれば，仮定(\ref{12})は満たされる．ただし，この値を計算するにはコストがかかりすぎる．さらに，上の一連の導出には多くの不等式評価が含まれる．よって，実際の計算では，式(\ref{21})の右辺より大きな値を$\delta$として選んでも問題ない．
-\end{rmk}
+ニュートン法は数値計算によって方程式を解くための反復法による求根アルゴリズムの1つである.
 
-式(\ref{2})の第2項目については，次の定理が成立する．
-\begin{thm}\label{residual}
-$\left(f(H_m)\right)_{i,j}=:g^m_{i,j}$とし，$tol_{exp}>0$を外部反復の収束判定条件とする．その他の記号はこれまでの定義に従うものとする．このとき
-\begin{Eqnarray}
-||r_{sys,1}||&\le&\frac{\gamma\cdot tol_{exp}}{m_{max}||H_m^{-1}c_m(t)||}\label{7}\mbox{,}\\
-||r_{sys,j}||&\le&\frac{|g^m_{1,1}|}{|g^m_{j-1,1}|}||r_{sys,1}||\quad(2\le j\le m)\label{8}
-\end{Eqnarray}
-ならば，次式が成立する．
-$$\frac 1{\gamma}||R_mf(H_m)e_1||\le tol_{exp}$$
-\end{thm}
-\begin{proof}
-次式が成立する．
-\begin{Eqnarray}
-&&\frac 1{\gamma}||R_mf(H_m)e_1||\nonumber\\
-&\le&\frac 1{\gamma}|g^m_{1,1}|||r_{sys,1}||+|g^m_{2,1}|||r_{sys,2}||+\cdots+|g^m_{m,1}|||r_{sys,m}||\nonumber
-\end{Eqnarray}
-ここで，式(\ref{7})，式(\ref{8})より次式が成立するから定理が成立する．
-\begin{Eqnarray}
-&&\frac1{\gamma}|g^m_{1,1}|||r_{sys,1}||+|g^m_{2,1}|||r_{sys,2}||+\cdots+|g^m_{m,1}|||r_{sys,m}||\nonumber\\
-&\le&\frac1{\gamma}|g^m_{1,1}|||r_{sys,1}||+|g^m_{2,1}|\frac{|g^m_{1,1}|}{|g^m_{1,1}|}||r_{sys,1}||+|g^m_{3,1}|\frac{|g^m_{1,1}|}{|g^m_{2,1}|}||r_{sys,1}||\nonumber\\
-&&\hspace{8cm}+\cdots +|g^m_{m,1}|\frac{|g^m_{1,1}|}{|g^m_{m-1,1}|}||r_{sys,1}||\nonumber\\
-&=&\frac1{\gamma}|g^m_{1,1}|||r_{sys,1}||\left(1+\frac{|g^m_{2,1}|}{|g^m_{1,1}|}+\frac{|g^m_{3,1}|}{|g^m_{2,1}|}+\cdots +\frac{|g^m_{m,1}|}{|g^m_{m-1,1}|}\right)\nonumber\\
-&\le&\frac1{\gamma}||f(H_m)e_1||||r_{sys,1}||\left(1+\lambda+\lambda+\cdots+\lambda\right)\quad(\because\mbox{式}(\ref{4}))\nonumber\\
-&\le&\frac1{\gamma}||H_m^{-1}c_m(t)||||r_{sys,1}||\cdot m_{max}\nonumber\\
-&\le& tol_{exp}\nonumber\hspace{10cm}\Box
-\end{Eqnarray}
-\end{proof}
-\begin{rmk}
-上の定理より，$m$回目の外部反復において，式(\ref{7})，式(\ref{8})を満たすように線形方程式$(B+\gamma A)x_j=Bv_j\ (1\le j\le m)$が解かれていれば，式(\ref{2})の第1項$||r_{exp,m}^{comp}||:=\left|h_{m+1,m}\left(e_m^Tf(H_m)e_1\right)\right|||(B+\gamma A)v_{m+1}||/\gamma$のみを計算し，これが収束判定条件$tol_{exp}$に達するまで外部反復を行えばよい．
-\end{rmk}
-\begin{rmk}
-実際の計算では，式(\ref{7})，式(\ref{8})に現れる$m$の入っている項を事前に計算することはできない．そこで，式(\ref{7})は，次の近似式を用いて計算する．
-\begin{Eqnarray*}
-&&||H_m^{-1}c_m(t)||||r_{sys,1}||\\
-&\approx&||r_{sys,1}||||V_m^TB^{-1}(B+\gamma A)V_mc_m(t)||\quad(\because\mbox{式}(\ref{5}))\\
-&\approx&||r_{sys,1}||||V_m^TB^{-1}(B+\gamma A)(y(t)-A^{-1}c)||\quad(\because\mbox{式}(\ref{6}))\\
-&\lesssim&||r_{sys,1}||||B^{-1}(B+\gamma A)(v-A^{-1}c)||
-\end{Eqnarray*}
-よって，式(\ref{7})の代わりに次式を用いる．
-\begin{equation}
-  ||r_{sys,1}||\le\frac {\gamma\cdot tol_{exp}}{m_{max}||B^{-1}(B+\gamma A)(v-A^{-1}c)||}\nonumber
-\end{equation}
-式(\ref{8})は，式(\ref{4})の$K$と$\lambda$が，$H_m$の次元$m$に依存しない集合$\mathcal{F}$のみに依存して決まるから，$2\le j\le m$に対して$|g^m_{1,1}|\approx |g^{j-1}_{1,1}|$，$|g^m_{1,j-1}|\approx |g^{j-1}_{1,j-1}|$と近似して計算する．また，相対残差が$tol_{exp}$になることを収束判定条件にしたい場合は，次式を用いればよい．
-$$||r_{exp,m}^{comp}||\le tol_{exp}||B^{-1}(-Ay(t)+c)||\approx tol_{exp}||B^{-1}(-Av+c)||$$
-\end{rmk}
+\section{1変数関数に関するニュートン法} 
 
-\ref{secisiae}節の内容をまとめると，Algorithm \ref{al1}のようになる．ただし，$(f_m)_j$は$f_m$の第$j$成分である．
-\begin{algorithm}[t]
-\caption{ISIAE法}
-\begin{algorithmic}\label{al1}
-\REQUIRE $A,B\in\mathbb{R}^{n\times n}$，$v,c\in\mathbb{R}^n$，$t\in(0,T]$，$\gamma>0$，$\delta>0$，$tol_{exp}>0$，$m_{max}\in\mathbb{N}$
-\ENSURE $y_m(t)$ such that $||r^{real}_{exp,m}||\le tol_{exp}$\\
-\STATE $\beta=||v-A^{-1}c||$，$v_1=(v-A^{-1}c)/\beta$
-\STATE $tol_{sys,1}=\gamma tol_{exp}/(m_{max}||B^{-1}(B+\gamma A)(v-A^{-1}c)||)$
-\FOR{$m=1,2,\cdots,m_{max}$}
-\STATE Compute $\tilde{x}$ such that $||Bv_m-(B+\gamma A)\tilde{x}||\le tol_{sys,m}$
-\FOR {$k=1,2,\cdots,m$}
-\STATE $h_{k,m}=\tilde{x}^Tv_k$
-\STATE $\tilde{x}=\tilde{x}-h_{k,m}v_k$
-\ENDFOR
-\STATE $h_{m+1,m}=||\tilde{x}||$，$v_{m+1}=\tilde{x}/h_{m+1,m}$
-\IF{$\lambda_{min}((H_m+H_m^T)/2)\le0$}
-\PRINT Warning
-\ENDIF
-\STATE $f_m=H_m^{-1}e^{-\frac t{\gamma}(H^{-1}_m-I)}e_1$
-\STATE $r=|h_{m+1,m}(f_m)_m|||(B+\gamma A)v_{m+1}||/\gamma$
-\STATE $tol_{sys,m+1}=\min\{tol_{sys,1}|(f_m)_1|/|(f_m)_m|,\delta\}$
-\IF{$r\le tol_{exp}$}
-\STATE $y_m(t)=\beta V_me^{-\frac t{\gamma}(H_m^{-1}-I)}e_1+A^{-1}c$, break
-\ENDIF
-\ENDFOR
-\end{algorithmic}
-\end{algorithm}
-\section{ISIAE法の誤差解析}
-\ref{secisiae}節では，ISIAE法が残差を収束判定条件$tol_{exp}$以下に保障することを述べた．そこで，次に誤差について考える．
+1変数関数に関するニュートン法とは関数 $f: \mathbb{R} \rightarrow \mathbb{R}$が$f(x) = 0 $となるような$x$を求める問題を考えた時に真の解に近いと思われる$x_n$を通り傾き$f'(x_n)$であるような$x_n$の接線と$x$軸との交点を$x_{n+1}$とするような漸化式
 
-式(\ref{9})を帰納的に用いると，次式が導かれる．
-\begin{equation}
-(ZB)^kv_1=V_mH_m^ke_1+\sum_{i=0}^{k-1}(ZB)^{i}F_mH_m^{k-1-i}e_1\quad (k=1,\cdots m-1)\nonumber
-\end{equation}
-ただし，$Z=(B+\gamma A)^{-1}$である．よって，$^{\forall}p\in\Pi_{m-1}$に対して次式が成立する．
-\begin{equation}
-p(ZB)v_1=V_mp(H_m)e_1+\sum_{j=1}^{m-1}c_j\sum_{k=0}^{j-1}(ZB)^kF_mH_m^{j-1-k}e_1\nonumber
-\end{equation}
-ただし，$p(z)=\Sigma_{j=0}^{m-1}c_jz^j$である．これより，Proposition \ref{siaeerr}と同様にして，次の補題が成立する．
-\begin{lem}
-Proposition \ref{siaeerr}と同じ仮定の下，$W(H_m)\subseteq \overline{S_{\rho,\theta}}$，
-ならば，次式が成立する．
-$$||y(t)-V_mc_m(t)-A^{-1}c||\le \frac{1+\beta}{2\pi\sin(\theta^*-\theta)}\min_{p\in\Pi_{m-1}}\int_{\Gamma^*}\left|\frac{g(\lambda)-p(\lambda)}{\lambda}\right||d\lambda|+||G_m||$$
-ただし，$G_m:=\sum_{j=1}^{m-1}c_j\sum_{k=0}^{j-1}(ZB)^kF_mH_m^{j-1-k}e_1$である．
-\end{lem}
-これより，次の定理が成立する．
-\begin{thm}\label{themerr}
-$m\gg 1$に対して$\gamma=O(||v-A^{-1}c||/||B^{-1}||)$かつ$\max_{0\le k\le m-2}||((B+\gamma A)^{-1}B)^k||\le O(1)$となるように$\gamma$をとれば，$||G_m||\le O(tol_{exp})$が成立する．
-\end{thm}
-\begin{proof}
-次式が成立する．
 \begin{Eqnarray*}
-||G_m||&=&||\sum_{k=0}^{m-2}\sum_{j=k+1}^{m-1}c_j(ZB)^kF_mH_m^{j-1-k}e_1||\\
-&\le&\sum_{k=0}^{m-2}||(ZB)^k||||F_m\sum_{j=k+1}^{m-1}c_jH_m^{j-1-k}e_1||\\
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_{n})}
 \end{Eqnarray*}
-ここで，$p_k(z):=\sum_{j=k+1}^{m-1}c_jz^{j-1-k}$と定めると，$p_k$は多項式だから$\mathbb{C}$で正則である．よって，Benziら\cite{decay}のTheorem 11よりある定数$K_k'>0$と$0<\lambda'_k<1$が存在して，次式が成立する．
-$$|(p_k(H_m))_{i,j}|\le K'_k\lambda_k^{'i-j}\quad(i\ge j)$$
-$p_k$が$\mathbb{C}$で正則であることから，Benziら\cite{decay}のTheorem 9より，Proposition \ref{prop1}の$\lambda$に対して$\lambda'_k\ll\lambda\quad(k=0,\cdots, m-2)$ととることができる．よって，$\lambda':=\max_{0\le k\le m-2}\lambda'_k$，$K':=\max_{0\le k\le m-2}K'_k$と定めれば$k=0,\cdots,m-2$に対して次式が成立する．
-\begin{Eqnarray*}
-||F_mp_k(H_m)e_1||&\le&K'||f_1||+K'\lambda'||f_2||+\cdots +K'\lambda'^{m-1}||f_{m}||\\
-&\le&K'||Z||(||r_{sys,1}||+\lambda'||r_{sys,2}||+\cdots +\lambda'^{m-1}||r_{sys,m}||)\\
-&\le&K'||Z||||r_{sys,1}||\left(1+\lambda'+\frac{\lambda'^2}{\lambda}+\cdots +\frac{\lambda'^{m-1}}{\lambda^{m-2}}\right)\quad(\because\mbox{式}(\ref{8}))\\
-&\le&K'||Z||\frac{\gamma tol_{exp}}{m_{max}||H_m^{-1}c_m(t)||}\left(1+\frac{\lambda'}{1-\lambda'/\lambda}\right)\quad(\because\mbox{式}(\ref{7}),\ \lambda'/\lambda<1)
-\end{Eqnarray*}
-ここで，$\mbox{det}(A)\neq 0$なる正方行列$A$と$k=0\cdots m-2$に対して$A\mapsto (A^{-1}B)^k$という写像は$||\cdot||$に関して連続であるから，$^{\forall}\epsilon_k>0$と$B$に対して$\gamma||A||$が十分小さくなるように$\gamma$をとれば，次式が成立する．
-\begin{Eqnarray}
-||(ZB)^k||&\le&||((B+\gamma A)^{-1}B)^k-(B^{-1}B)^k||+||I||\nonumber\\
-&\le&\epsilon+1\quad(k=0\cdots m-2)\label{34}
-\end{Eqnarray}
-よって，$\max_{0\le k\le m-2}||(ZB)^k||=O(1)$なる$\gamma$をとることができる．また，次式が成立する．
-\begin{Eqnarray*}
-\frac 1{||H_m^{-1}c_m(t)||}&\le&\frac 1{\sigma_{min}(H_m^{-1})||V_mc_m(t)||}\\
-&=&\frac{||H_m||}{||V_mc_m(t)||}\\
-&\le&\frac{||ZB||}{||V_mc_m(t)||}\\
-&=&O\left(\frac 1{||v-A^{-1}c||}\right)
-\end{Eqnarray*}
-さらに，式(\ref{34})の$\epsilon$に対して次式が成立する．
-\begin{equation}
-||Z||\le ||(B+\gamma A)^{-1}B||||B^{-1}||\le(\epsilon+1)||B^{-1}||\nonumber
-\end{equation}
-以上より，次式が成立するから定理が成立する．
-\begin{Eqnarray*}
-||G_m||&\le&O\left(mK'||B^{-1}||\left(1+\frac{\lambda\lambda'}{\lambda-\lambda'}\right)\frac{\gamma tol_{exp}}{m_{max}||H_m^{-1}c_m(t)||}\right)\\
-&\le& O\left(||B^{-1}||\frac{\gamma tol_{exp}}{||v-A^{-1}c||}\right)\hspace{5cm}\Box
-\end{Eqnarray*}
-\end{proof}
 
-以上より，適切な$\gamma$をとれば，誤差は$tol_{exp}$を閾値として$m$の増加とともに減少していくことがわかる．
-\begin{rmk}
-理論的には$\gamma$を十分に小さくとっておけばTheorem \ref{themerr}の仮定は満たされる．しかし，実際の計算では$\gamma$があまりにも小さいと$(B+\gamma A)^{-1}B$が$I$とほぼ等しくなる．このため，$H_m=V_m^T(B+\gamma A)^{-1}BV_m$が$I$とほぼ等しくなり，$H^{-1}_m-I$の計算において桁落ちが発生する可能性がある．
-\end{rmk}
-%ISIAE法の１回の外部反復を大きく分けると，線形方程式$(B+\gamma A)x_m=Bv_m$を解く部分と$\tilde{x_m}$を直交化する部分になる．線形方程式を解く部分で生じる誤差についてはアルゴリズムの中で考慮されている．よって，直交化の部分で生じる誤差について考え，$A$についての後方誤差解析を行う．
+を$n \rightarrow  \infty $とした時に$x_n$が真の解に収束する事を期待するアルゴリズムである.
+
+\section{多次元関数に関するニュートン法} 
+
+多次元関数 $f: \mathbb{R}^m \rightarrow \mathbb{R}^m$の$f(x) = 0$となるような$x \in \mathbb{R}^m$を求める問題において真の解に近いと思われる $x_n$ 周りのテイラー展開
+
+
+\begin{Eqnarray*}
+f(x) = f(x_n) + \partial f(x_n) (x - x_n) + ...
+\end{Eqnarray*}
+
+(但し $\partial f(x)$ はヤコビ行列）
+
+右辺の二次以降の項を無視して得れる一次近似の零点を $x_{n+1}$ とするような漸化式
+
+\begin{Eqnarray*}
+x_{n+1} = x_n -  \partial f(x_n)^{-1} f(x_n)
+\end{Eqnarray*}
+
+の数列が解に収束する事を期待するアルゴリズムである.
+
+ただ数値計算において $\partial f(x_n)^{-1}$ を求める事は困難、もしくは誤差を生じさせるため
+
+\begin{Eqnarray*}
+\partial f(x_n) r = f(x_n)
+\end{Eqnarray*}
+
+をガウスの消去法などで解き、残差 $r$ を求め　$x_{n+1} = x_n - r$ として $x_{n+1}$ を求める.
+
+\chapter{今回のケース}
+前章まで見てきたように, 今回の問題は
+
+\begin{Eqnarray*}
+\mathbb{P}(X,H) = 0 \\
+\mathbb{V}(X,H) = 0
+\end{Eqnarray*}
+
+$\mathbb{L}: \mathbb{C}^{nd\times k} \times \mathbb{C}^{k\times k} \rightarrow a$
+
+
+
 %
-%$\tilde{x_m}=x_m-f_m$を直交化する際，\cite{backword}Theorem 3.3より，$D_m\in\mathbb{R}^{n\times m}$が存在して式(\ref{9})は実際には以下のようになっている．
-%\begin{equation}
-%(B+\gamma A)^{-1}BV_m-F_m+D_m=V_mH_m+h_{m+1,m}v_{m+1}e_m^T\label{31}
-%\end{equation}
-%ここで，表記の煩雑さを避けるために，$\underline{H_m}$を以下のように定める．
-%$$\underline{H_m}:=\left[\begin{array}{cc}
-%H_m&0\\
-%0&h_{m+1,m}\end{array}\right]$$
-%このとき，以下の定理が成立する．
-%\begin{thm}
-%$||v_j||=1\quad(j=1,\cdots,m)$，$\exists\rho>0,\ (1+(n+3)\epsilon)^m<1+\rho$，$V_m\underline{H_m}$がフルランクならば，$\delta A\in\mathbb{R}^{n\times n}$が存在して以下が成立する．
-%\begin{Eqnarray}
-%(B+\gamma (A+\delta A))^{-1}BV_m-F_m&=&V_{m+1}\underline{H_m}\label{32}\\
-%||\delta A||&\le&\frac 1{\gamma}\sqrt{m}||B+\gamma A||\kappa(B)\kappa(V_{m+1})\kappa(\underline{H_m})\epsilon_m\label{33}
-%\end{Eqnarray}
-%ただし，$\epsilon_m:=4(1+\rho)m/(1-4(1+\rho)m)$である．
-%\end{thm}
-%\begin{proof}
-%仮定より$V_m\underline{H_m}$はフルランクだから，$\delta A=-BD'_m(V_{m+1}H_m)^{+}/\gamma$と選べば，$B+\gamma (A+\delta A)$が正則であれば式(\ref{31})と式(\ref{32})は同値になる．ただし，$A\in\mathbb{R}^{n\times m}$に対して$A^{+}\in\mathbb{R}^{m\times n}$は，Moore-Penrose擬似逆行列を表し，$\mbox{rank}(A)=m$のときは$A^{+}=(A^TA)^{-1}A^T$となる．
-%ここで，$B+\gamma (A+\delta A)$が正則でなければ，\cite{backword}Lemma 4.1より，$\forall{\epsilon}>0$に対して$X\in\mathbb{R}^{n\times n}$が存在して
-%\end{proof}
 \chapter{数値実験}
 本章では，数値実験により3章，4章で述べた解法の有効性を示す．全ての数値実験は以下の環境で行った．
 \begin{itemize}
@@ -578,25 +256,8 @@ $p_k$が$\mathbb{C}$で正則であることから，Benziら\cite{decay}のTheo
 %
 \addcontentsline{toc}{chapter}{参考文献}
 \begin{thebibliography}{99}
-\bibitem{tme}Lee,~S., Pang,~H., and Sun,~H., \textsl{``Shift-invert Arnoldi approximation to the Toeplitz matrix exponential,''} SIAM Journal on Scientific Computing, Vol. 32, pp.\ 774--792, 2010.
-\bibitem{inexact}Feng,~T., Gang,~W., and Yimin, W., \textsl{``An inexact shift-and-invert Arnoldi algorithm for Toeplitz matrix exponential,''} Numerical Linear Algebra with Applications, Vol.\ 22, pp.\ 777--792, 2015.
-\bibitem{efficient}Gallopoulos,~E. and Saad,~Y., \textsl{``Efficient Solution Of Parabolic Equations By Krylov Approximation Methods,''} SIAM Journal on Scientific Statistics, Vol.\ 13, pp.\ 1236--1264, 1992.
-\bibitem{nineteen}Moler,~C. and Van Loan,~C.~F., \textsl{``Nineteen dubious ways to compute the exponential of a matrix, twenty-five years later,''} SIAM Review, Vol.\ 45, pp.\ 3--49, 2003.
-\bibitem{rational}Moret,~I. and Novati,~P., \textsl{``RD-rational approximations of the matrix exponential,''} BIT Vol.\ 44, pp.\ 595--615, 2004.
-\bibitem{decay}Benzi,~M. and Poito,~P., \textsl{``Decay properties for functions of matrices over $C^*$-algebras,''} Linear Algebla and its Apprications, Vol.\ 456, pp.\ 174--198, 2014.
-\bibitem{fdm}Forsythe,~G.~E. and Wasow,~R.~W., ``Finite-difference methods for partial differential equations,'' John Wiley \& Sons Inc., New York$\cdot$London$\cdot$Sydney, 1960.
-\bibitem{pde}Evans,~L.~C., ``Partial Differential Equations Second Edition,'' AMS, Providence, 2010.
-\bibitem{bicgstab}Van der Vorst, \textsl{``Bi-CGSTAB: A fast and smoothly converging variant of Bi-CG for the solution of nonsymmetric
-linear systems,''} SlAM Journal on Scientific and Statistical Computing, Vol.\ 13, pp.\ 631--644, 1992.
-\bibitem{matlabfem}Alberty,~J., Carstensen,~C., and Funken,~S.~A., \textsl{``Remarks around 50 lines of Matlab: short finite element implementation,''} Numerical Algorithms, Vol.\ 20, pp.\ 117--137, 1999. 
-\bibitem{fem}Segal,~Ir.~A., ``Finite element methods for the incompressible Navier-Stokes equations,'' Delft Institute of Applied Mathematics, Delft, The Netherlands, 2015.
-\bibitem{parabolic}Mathworks, Matlab Documentation (parabolic), Mathworks (online), available from $<$http://jp.mathworks.com/help/pde/ug/parabolic.html$>$ (accessed 2016-01-15).
-\bibitem{matlabode15s}Shampine,~L.~F. and Reichelt,~M.~W., \textsl{``The MATLAB ODE Suite,''} SIAM Journal on Scientific Computing, Vol.\ 18, pp.\ 1-–22, 1997.
-\bibitem{iterate}Saad,~Y., ``Iterative Methods for Sparse Linear Systems Second Edition,'' SIAM, Philadelphia, 2003. 
-\bibitem{caratheodory}Carath\'{e}odory, C., \textsl{``\"{U}ber die gegenseitige Beziehung der R\"{a}nder bei der konformen Abbildung des Inneren einer Jordanschen Kurve auf einen Kreis,''} Mathematische Annalen, Vol.\ 73, pp.\ 305--320, 1913.
-\bibitem{Kato}Toshio,~K., ``Perturbation Theory for Linear operators,'' Springer, New York, 1966.
-\bibitem{Spijker}Spijker,~M.~N., \textsl{``Numerical Ranges and Stability Estimates,''} Applied Numerical Mathematics, Vol.\ 13, pp.\ 241--249, 1993. 
-\bibitem{building}Svoboda, Z., \textsl{``The Convective-diffusion Equation and Its Use In Building Physics,''} International Journal on Architectural Science, Vol.\ 1, pp.\ 68--79, 2000.
+
+
 \bibitem{trace}Ant\'{o}nio, A., Ad\'{e}rito, A. and Erc\'{i}lia, S., \textsl{``Application of the Advection-dispersion Equation to Characterize the Hydrodynamic Regime in a Submerged Packed Bed Reactor,''} Advances in Computational \& Experimental Engineering \& Sciences (Atluri, S. N. and Tadeu, A. J. B.,
 eds.), Maderia, Portugal, ICCES, Tech Science Press, pp.\ 548--553, 2004.
 \bibitem{complex}小平邦彦, ``複素解析'', 岩波書店, 1991.

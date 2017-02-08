@@ -1,19 +1,18 @@
 \contentsline {chapter}{\numberline {1}序論}{1}
 \contentsline {section}{\numberline {1.1}背景}{1}
 \contentsline {section}{\numberline {1.2}問題}{1}
-\contentsline {section}{\numberline {1.3}記法}{3}
-\contentsline {chapter}{\numberline {2}行列指数関数のためのKrylov部分空間法}{4}
-\contentsline {section}{\numberline {2.1}AE法}{4}
-\contentsline {section}{\numberline {2.2}SIAE法}{5}
-\contentsline {chapter}{\numberline {3}線形発展方程式の離散化}{8}
-\contentsline {section}{\numberline {3.1}有限差分法}{8}
-\contentsline {section}{\numberline {3.2}有限要素法}{8}
-\contentsline {chapter}{\numberline {4}ISIAE法}{10}
-\contentsline {section}{\numberline {4.1}ISIAE法}{10}
-\contentsline {section}{\numberline {4.2}ISIAE法の誤差解析}{15}
-\contentsline {chapter}{\numberline {5}数値実験}{19}
-\contentsline {chapter}{\numberline {6}結論}{20}
-\contentsline {chapter}{謝辞}{20}
-\contentsline {chapter}{参考文献}{21}
-\contentsline {chapter}{\numberline {A}ISIAE法}{24}
-\contentsline {chapter}{\numberline {B}BiCGStab法}{26}
+\contentsline {chapter}{\numberline {2}行列多項式の線形化}{3}
+\contentsline {section}{\numberline {2.1}線形化}{3}
+\contentsline {chapter}{\numberline {3}不変部分空間とInvariant Pair}{4}
+\contentsline {section}{\numberline {3.1}不変部分空間}{4}
+\contentsline {section}{\numberline {3.2}Invariant Pair}{4}
+\contentsline {chapter}{\numberline {4}高次元のニュートン法}{6}
+\contentsline {section}{\numberline {4.1}1変数関数に関するニュートン法}{6}
+\contentsline {section}{\numberline {4.2}多次元関数に関するニュートン法}{6}
+\contentsline {chapter}{\numberline {5}今回のケース}{8}
+\contentsline {chapter}{\numberline {6}数値実験}{9}
+\contentsline {chapter}{\numberline {7}結論}{10}
+\contentsline {chapter}{謝辞}{10}
+\contentsline {chapter}{参考文献}{11}
+\contentsline {chapter}{\numberline {A}ISIAE法}{13}
+\contentsline {chapter}{\numberline {B}BiCGStab法}{15}
