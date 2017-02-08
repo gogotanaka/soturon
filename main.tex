@@ -40,12 +40,11 @@ abst
 %
 \chapter{序論}
 \section{背景}\label{chapint}
-$n$個の質点に関する多自由度系の振動と呼ばれる物理現象（空気抵抗がありそれぞれがバネで繋がっている）は以下のような運動方程式を生じさせる.
+$n$個の質点に関して位相と位相の変化の量によって力がかかる（例えばそれぞれがバネで繋がっていて空気抵抗がある場合）多自由度系の振動と呼ばれる物理現象は以下のような運動方程式を生じさせる.
 
 \begin{Eqnarray*}
 M\frac{d^2y}{dt^2} + C\frac{dy}{dt} + Ky = y(t)
 \end{Eqnarray*}
-
 
 $M$は質量行列と呼ばれ質点の質量を対角線上に並べた対角行列, $C$は減衰行列と呼ばれ空気抵抗などの速さと力の関係を表す行列, $K$は剛体行列と呼ばれ変位と力を関係を表す行列である. この運動方程式を解く際には以下の二次固有値問題を解く必要性が生じる.
 
@@ -72,16 +71,36 @@ P(\lambda)x = 0
 P(\lambda) = A_0\Phi_0(\lambda) + A_1\Phi_1(\lambda) + \cdots + A_d\Phi_d(\lambda)\label{1}
 \end{Eqnarray}
 
-と表す事にする. ここで$\Phi_j$ はj次の多項式で以下を満たす.
+と表す事にする. ここで$\Phi_j$ は$j$次の多項式で以下を満たす.
 
 \begin{Eqnarray*}
 \lambda\Phi_j(\lambda) = \alpha\Phi_{j+1}(\lambda) + \beta\Phi_{j}(\lambda) + \gamma\Phi_{j-1}(\lambda)
 \end{Eqnarray*}
 ただし$\Phi_{-1} \equiv 0$, $\Phi_{0} \equiv 1$で$\alpha_j = \frac{c_j}{c_{j+1}}$を満たし, $c_j$を$\Phi_{j}(\lambda)$の最大次元の項の係数とする.
 %
-\chapter{行列多項式の線形化}\label{chapdisc}
-この章では1章で定義した問題設定の式(\ref{11})を線形化という手法で $\mathbb{C}^{nd \times nd}$ の行列に関する固有値問題に還元をすることを考える.
-\section{線形化}\label{secfdm}
+\chapter{Invariant Pairと線形化}
+\section{不変部分空間}\label{secisiae}
+
+$V$を$\mathbb{C}$上の線形空間，$W$を$V$の部分空間，$f : V \rightarrow V$を線形写像とする．このとき，$f(W) \subset W$ならば，$W$を$f$に関する不変部分空間という．行列の固有空間は不変部分空間である事が一般的に知られている．
+
+
+\section{Invariant Pair}\label{secisiae}
+
+
+\begin{definition}
+$(X, H) \in \mathbb{C}^{n\times k} \times \mathbb{C}^{k\times k}$が$P(x)$のinvariant pairであるとは,
+
+\begin{Eqnarray*}
+\mathbb{P}(X,H) \equiv A_0X\Phi_0(H) + A_1X\Phi_1(H) + \cdots + A_dX\Phi_d(H) = 0
+\end{Eqnarray*}
+を満たす事である.
+\end{definition}
+
+$\chi$ を $X$ の列ベクトルのなす線形空間とすると $\chi$ が $P$ の不変部分空間であるとみなす事ができる.
+
+
+\section{行列多項式の線形化}
+この節では1章で定義した問題設定の式(\ref{1})を線形化という手法で $\mathbb{C}^{nd \times nd}$ の行列に関する固有値問題に還元をすることを考える. ここでは以下の線形な行列多項式を考える.
 
 \begin{Eqnarray*}
 L_0 =  \left(
@@ -102,7 +121,7 @@ L_1 =  \left(
       I &  \\
         & \ddots \\
         &        & I  \\
-        &        &   & c_dA_d 
+        &        &   & c_dA_d
     \end{array}
   \right)
 \end{Eqnarray*}
@@ -110,32 +129,6 @@ L_1 =  \left(
 \begin{Eqnarray}
 L(\lambda) = L_0 - L_1 \lambda\label{2}
 \end{Eqnarray}
-
-%
-\chapter{不変部分空間とInvariant Pair}
-\section{不変部分空間}\label{secisiae}
-
-$V$を$\mathbb{C}$上の線形空間，$W$を$V$の部分空間，$f : V \rightarrow V$を線形写像とする．このとき，$f(W) \subset W$ならば，$W$を$f$に関する不変部分空間という．固有空間は不変部分空間である事が一般的に知られている．
-
-
-
-\section{Invariant Pair}\label{secisiae}
-
-
-\begin{definition}
-$(X, H) \in \mathbb{C}^{n\times k} \times \mathbb{C}^{k\times k}$が$P(x)$のinvariant pairであるとは, 
-
-\begin{Eqnarray*}
-\mathbb{P}(X,H) \equiv A_0X\Phi_0(H) + A_1X\Phi_1(H) + \cdots + A_dX\Phi_d(H) = 0
-\end{Eqnarray*}
-を満たす事である.
-\end{definition}
-
-
-
-
-$\chi$ を $X$ の列ベクトルのなす線形空間とすると $\chi$ が $P$ の不変部分空間であるとみなす事ができる.
-
 
 \begin{prop}
 式(\ref{2})のInvariant Pairを$(X, H) \in \mathbb{C}^{nd\times k} \times \mathbb{C}^{k\times k}$とした時, $X$が列フルランクであれば$H$の固有値は式(\ref{2})に対する固有多項式問題の固有値の解である.
@@ -149,10 +142,10 @@ L_0X - L_1XH = 0
 \begin{Eqnarray*}
 L_0Xx - L_1\lambda Xx = 0
 \end{Eqnarray*}
-であり, Xは列フルランク行列であるから, 
+であり, Xは列フルランク行列であるから,
 \begin{Eqnarray*}
 (L_0- L_1\lambda)y = 0
-\end{Eqnarray*} 
+\end{Eqnarray*}
 を満たすような$y = Xx \neq 0$であるから, $\lambda$は式(\ref{2})に対する固有多項式問題の固有値の解である.
 
 \begin{prop}
@@ -188,7 +181,7 @@ Proposition \ref{prop1}
 
 ニュートン法は数値計算によって方程式を解くための反復法による求根アルゴリズムの1つである.
 
-\section{1変数関数に関するニュートン法} 
+\section{1変数関数に関するニュートン法}
 
 1変数関数に関するニュートン法とは関数 $f: \mathbb{R} \rightarrow \mathbb{R}$が$f(x) = 0 $となるような$x$を求める問題を考えた時に真の解に近いと思われる$x_n$を通り傾き$f'(x_n)$であるような$x_n$の接線と$x$軸との交点を$x_{n+1}$とするような漸化式
 
@@ -198,7 +191,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_{n})}
 
 を$n \rightarrow  \infty $とした時に$x_n$が真の解に収束する事を期待するアルゴリズムである.
 
-\section{多次元関数に関するニュートン法} 
+\section{多次元関数に関するニュートン法}
 
 多次元関数 $f: \mathbb{R}^m \rightarrow \mathbb{R}^m$の$f(x) = 0$となるような$x \in \mathbb{R}^m$を求める問題において真の解に近いと思われる $x_n$ 周りのテイラー展開
 
@@ -224,6 +217,35 @@ x_{n+1} = x_n -  \partial f(x_n)^{-1} f(x_n)
 \end{Eqnarray*}
 
 をガウスの消去法などで解き、残差 $r$ を求め　$x_{n+1} = x_n - r$ として $x_{n+1}$ を求める.
+
+\chapter{フレシェ微分}
+フレシェ微分はバナッハ空間上で定義される微分法の一種で微分を一次変換で捉え実一変数実数値函数の微分の概念をバナッハ空間上の写像へ拡張したものである. フレシェ微分は実一変数関数$f: \mathbb{R} \rightarrow \mathbb{R}$の$x_0$における微分係数$f'(x_0)$を以下の様に定義する発想から始まる.
+
+\begin{definition}
+$f'(x_0)$を
+
+\begin{Eqnarray*}
+f(x_0 + h)-f(x_0)=mh+R_m(h)
+\end{Eqnarray*}
+
+で$\lim_{h \rightarrow 0} R_m(h) = 0$を満たす様な$m$と定義する.
+\end{definition}
+
+そしてこれを多次元関数$f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ が $x_0 \in \mathbb{R}^n$に以下のように拡張したのがフレシェ微分である.
+
+\begin{definition}
+関数$f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ が $x_0 \in \mathbb{R}^n$でフレシェ微分可能であるとは,
+
+有界線形作用素$A_{x_0}: \mathbb{R}^n \rightarrow \mathbb{R}^m$ で
+\begin{Eqnarray*}
+\lim_{||h|| \to 0} {\frac{ ||f(x+h)- f(x) - A_{x_0} ||}{||h||} } = 0
+\end{Eqnarray*}
+
+を満たすものが存在することである.
+\end{definition}
+
+
+
 
 \chapter{今回のケース}
 前章まで見てきたように, 今回の問題は
@@ -275,10 +297,10 @@ d=mybicgstab(L1,U1,A,c,10^(-14));
 init=v-d;
 beta=norm(init);
 V(:,1)=init/beta;
-[L2,U2]=ilu(B); 
+[L2,U2]=ilu(B);
 u=mybicgstab(L2,U2,B,C*init,10^(-14));
 tolsys=gamma*tol/(norm(u)*mmax);
-tol1=tolsys;  
+tol1=tolsys;
 j=0;
 r=1;
 flag=0;
@@ -351,3 +373,4 @@ x=U\(L\x);
 \end{verbatim}
 \end{appendix}
 \end{document}
+
