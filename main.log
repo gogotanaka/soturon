@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.10)  8 FEB 2017 12:05
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.10)  8 FEB 2017 13:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -174,7 +174,7 @@ File: thp.sty 2014/10/28 v2.2c Theorem extension package (FMi)
 LaTeX Warning: Unused global option(s):
     [a4paper].
 
-No file main.aux.
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
@@ -194,7 +194,7 @@ LaTeX Font Info:    ... okay on input line 29.
 LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
 LaTeX Font Info:    Try loading font information for U+msa on input line 33.
-(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 33.
@@ -211,11 +211,16 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <24.88> not available
 
 
 目 次
-No file main.toc.
+(./main.toc
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1.
+)
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
-[1
+ [1
 
 ] [0]
 
@@ -224,398 +229,89 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 41.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 68.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 68.
-
-LaTeX Warning: Reference `10' on page 1 undefined on input line 68.
-
-
-LaTeX Warning: Citation `tme' on page 1 undefined on input line 76.
-
-
-LaTeX Warning: Citation `inexact' on page 1 undefined on input line 76.
-
-
-LaTeX Warning: Citation `efficient' on page 1 undefined on input line 76.
-
-
-LaTeX Warning: Citation `nineteen' on page 1 undefined on input line 76.
-
-
-LaTeX Warning: Citation `rational' on page 1 undefined on input line 76.
-
-
-LaTeX Warning: Citation `efficient' on page 1 undefined on input line 76.
-
-
-LaTeX Warning: Citation `nineteen' on page 1 undefined on input line 76.
-
-
-LaTeX Warning: Citation `rational' on page 1 undefined on input line 77.
-
-
-LaTeX Warning: Citation `tme' on page 1 undefined on input line 77.
-
-
-LaTeX Warning: Citation `rational' on page 1 undefined on input line 77.
-
-
-LaTeX Warning: Reference `sol' on page 1 undefined on input line 77.
-
 [1
 
-]
-
-LaTeX Warning: Reference `11' on page 2 undefined on input line 79.
-
-
-LaTeX Warning: Reference `10' on page 2 undefined on input line 79.
-
-
-LaTeX Warning: Reference `11' on page 2 undefined on input line 81.
-
-[2]
+] [2] [3]
 
 第 {2} 章 行列指数関数のためのKrylov部分空間法
+[4
 
-LaTeX Warning: Reference `al2' on page 3 undefined on input line 97.
-
-
-LaTeX Warning: Citation `efficient' on page 3 undefined on input line 125.
-
-[3
-
-]
-
-LaTeX Warning: Reference `1' on page 4 undefined on input line 135.
-
-
-LaTeX Warning: Reference `al3' on page 4 undefined on input line 142.
-
-[4]
-
-LaTeX Warning: Citation `rational' on page 5 undefined on input line 171.
-
-
-LaTeX Warning: Citation `tme' on page 5 undefined on input line 171.
-
+] [5]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 172.
+(Font)              using `JT1/mc/m/n' instead on input line 183.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 172.
+(Font)              using `JY1/mc/m/n' instead on input line 183.
 
-
-LaTeX Warning: Reference `1' on page 5 undefined on input line 187.
-
-[5]
-
-LaTeX Warning: Citation `Kato' on page 6 undefined on input line 199.
-
-
-LaTeX Warning: Citation `Spijker' on page 6 undefined on input line 201.
-
-
-LaTeX Warning: Citation `tme' on page 6 undefined on input line 211.
-
-
-LaTeX Warning: Reference `35' on page 6 undefined on input line 211.
-
-
-LaTeX Warning: Citation `rational' on page 6 undefined on input line 211.
-
-[6]
+[6] [7]
 
 第 {3} 章 線形発展方程式の離散化
+[8
 
-LaTeX Warning: Reference `11' on page 7 undefined on input line 216.
-
-
-LaTeX Warning: Reference `10' on page 7 undefined on input line 216.
-
-
-LaTeX Warning: Citation `fdm' on page 7 undefined on input line 216.
-
-
-LaTeX Warning: Reference `11' on page 7 undefined on input line 218.
-
-
-LaTeX Warning: Citation `pde' on page 7 undefined on input line 218.
-
-
-LaTeX Warning: Reference `14' on page 7 undefined on input line 231.
-
-[7
-
-]
-
-LaTeX Warning: Reference `15' on page 8 undefined on input line 236.
-
-
-LaTeX Warning: Reference `30' on page 8 undefined on input line 240.
-
-
-LaTeX Warning: Reference `10' on page 8 undefined on input line 240.
-
-
-LaTeX Warning: Citation `matlabfem' on page 8 undefined on input line 240.
-
-
-LaTeX Warning: Citation `fem' on page 8 undefined on input line 240.
-
-
-LaTeX Warning: Reference `secfdm' on page 8 undefined on input line 240.
-
-[8]
+] [9]
 
 第 {4} 章 ISIAE法
+[10
 
-LaTeX Warning: Reference `chapdisc' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Reference `10' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Reference `sol' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Reference `chapKry' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Reference `20' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Reference `chapKry' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Reference `chapint' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Citation `tme' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Citation `inexact' on page 9 undefined on input line 244.
-
-
-LaTeX Warning: Reference `1' on page 9 undefined on input line 252.
-
-
-LaTeX Warning: Reference `10' on page 9 undefined on input line 260.
-
-[9
-
-]
-
-LaTeX Warning: Reference `3' on page 10 undefined on input line 266.
-
-
-LaTeX Warning: Citation `decay' on page 10 undefined on input line 285.
-
-
-LaTeX Warning: Citation `complex' on page 10 undefined on input line 285.
-
-
-LaTeX Warning: Citation `decay' on page 10 undefined on input line 285.
-
-
-LaTeX Warning: Citation `caratheodory' on page 10 undefined on input line 285.
-
-
-LaTeX Warning: Citation `decay' on page 10 undefined on input line 285.
-
-
-LaTeX Warning: Reference `prop1' on page 10 undefined on input line 288.
-
-
-LaTeX Warning: Reference `12' on page 10 undefined on input line 288.
-
-
-LaTeX Warning: Reference `prop1' on page 10 undefined on input line 291.
-
-
-LaTeX Warning: Reference `2' on page 10 undefined on input line 291.
-
-[10]
-
-LaTeX Warning: Reference `2' on page 11 undefined on input line 312.
-
-
-LaTeX Warning: Reference `12' on page 11 undefined on input line 314.
-
-
-LaTeX Warning: Reference `13' on page 11 undefined on input line 314.
-
-
-LaTeX Warning: Reference `13' on page 11 undefined on input line 314.
-
-
-LaTeX Warning: Reference `12' on page 11 undefined on input line 314.
-
-
-LaTeX Warning: Reference `12' on page 11 undefined on input line 329.
-
-[11]
-
-LaTeX Warning: Reference `21' on page 12 undefined on input line 362.
-
-
-LaTeX Warning: Reference `12' on page 12 undefined on input line 362.
-
-
-LaTeX Warning: Reference `21' on page 12 undefined on input line 362.
-
-
-LaTeX Warning: Reference `2' on page 12 undefined on input line 365.
-
-[12]
-
-LaTeX Warning: Reference `7' on page 13 undefined on input line 381.
-
-
-LaTeX Warning: Reference `8' on page 13 undefined on input line 381.
-
-
-LaTeX Warning: Reference `4' on page 13 undefined on input line 387.
-
-
-LaTeX Warning: Reference `7' on page 13 undefined on input line 393.
-
-
-LaTeX Warning: Reference `8' on page 13 undefined on input line 393.
-
-
-LaTeX Warning: Reference `2' on page 13 undefined on input line 393.
-
-
-LaTeX Warning: Reference `7' on page 13 undefined on input line 396.
-
-
-LaTeX Warning: Reference `8' on page 13 undefined on input line 396.
-
-
-LaTeX Warning: Reference `7' on page 13 undefined on input line 396.
-
-
-LaTeX Warning: Reference `5' on page 13 undefined on input line 399.
-
-
-LaTeX Warning: Reference `6' on page 13 undefined on input line 400.
-
-[13]
-
-LaTeX Warning: Reference `7' on page 14 undefined on input line 403.
-
-
-LaTeX Warning: Reference `8' on page 14 undefined on input line 407.
-
-
-LaTeX Warning: Reference `4' on page 14 undefined on input line 407.
-
-
-LaTeX Warning: Reference `secisiae' on page 14 undefined on input line 411.
-
-
-LaTeX Warning: Reference `al1' on page 14 undefined on input line 411.
-
-
-LaTeX Warning: Reference `secisiae' on page 14 undefined on input line 439.
-
-
-LaTeX Warning: Reference `9' on page 14 undefined on input line 441.
-
-
-LaTeX Warning: Reference `siaeerr' on page 14 undefined on input line 449.
-
-
-LaTeX Warning: Reference `siaeerr' on page 14 undefined on input line 451.
-
-[14]
-
-LaTeX Warning: Citation `decay' on page 15 undefined on input line 466.
-
-
-LaTeX Warning: Citation `decay' on page 15 undefined on input line 468.
-
-
-LaTeX Warning: Reference `prop1' on page 15 undefined on input line 468.
-
-[15]
-
-LaTeX Warning: Reference `8' on page 16 undefined on input line 472.
-
-
-LaTeX Warning: Reference `7' on page 16 undefined on input line 473.
-
-
-LaTeX Warning: Reference `34' on page 16 undefined on input line 487.
-
-
-LaTeX Warning: Reference `themerr' on page 16 undefined on input line 500.
-
-[16] [17]
+] [11] [12] [13] [14] [15] [16] [17] [18]
 
 第 {5} 章 数値実験
-[18
-
-]
-
-第 {6} 章 結論
 [19
 
 ]
 
-謝辞
+第 {6} 章 結論
 [20
+
+]
+
+謝辞
+[21
 
 ]
 
 参 考 文 献
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sl' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 543.
+(Font)              using `JT1/mc/m/n' instead on input line 554.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sl' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 543.
+(Font)              using `JY1/mc/m/n' instead on input line 554.
 
-[21
+[22
 
 ]
 Missing character: There is no ^^e2 in font cmr12!
 Missing character: There is no ^^80 in font cmr12!
 Missing character: There is no ^^93 in font cmr12!
- [22]
+ [23]
 
 第 {A} 章 ISIAE法
-[23
+[24
 
-] [24]
+] [25]
 
 第 {B} 章 BiCGStab法
-[25
+[26
 
 ] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2030 strings out of 493742
- 23710 string characters out of 6151251
+ 2014 strings out of 493742
+ 23558 string characters out of 6151251
  93712 words of memory out of 5000000
- 5521 multiletter control sequences out of 15000+600000
- 23788 words of font info for 94 fonts, out of 8000000 for 9000
+ 5509 multiletter control sequences out of 15000+600000
+ 21932 words of font info for 86 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 33i,14n,26p,1433b,515s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,14n,26p,1428b,515s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (28 pages, 77960 bytes).
+Output written on main.dvi (29 pages, 82768 bytes).

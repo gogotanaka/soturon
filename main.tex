@@ -27,25 +27,40 @@
 \renewcommand{\textfraction}{0.0}
 %\setcounter{topnumber}{3}
 \begin{document}
-\title{線形発展方程式のための\\Inexact Shift-invert Arnoldi法}
-\author{橋本\ 悠香\\\\\\慶應義塾大学理工学部数理科学科\\野寺研究室}
+\title{多項式固有値問題に対するニュートン法を使った反復改良法}
+\author{田中\ 和希\\\\\\慶應義塾大学理工学部数理科学科\\野寺研究室}
 \date{}
 \maketitle
 \begin{tableofcontents}
 \end{tableofcontents}
 \abstract
-1階の時間微分を含む線形発展方程式の初期値境界値問題を考える．例として移流拡散方程式等がある．このような問題の数値解法として，空間方向にのみ離散化を行い，１階の多次元常微分方程式を導く方法が効率的である．ただし，この方法は，特殊な形式の大規模行列指数関数の計算を必要とする．大規模行列指数関数を計算するための方法には，Arnoldi法を利用するものがあるが，離散化により導かれる行列の性質や求めたい近似解によっては，多くの反復回数を必要とする．これを改善する方法としてShift-invert Arnoldi法[BIT Numerical Mathematics, pp.\ 595--615, 2004]が提案されている．本稿では，問題を適切に離散化する方法について述べ，行列指数関数を高速に計算するShift-invert Arnoldi法に基づく新しい算法を提案する．
+abst
 \endabstract
 %
 \chapter{序論}
 \section{背景}\label{chapint}
-線形発展方程式の数値解を求めることは，物理学，工学において重要な意味を持つ．移流拡散方程式はその代表例であり，建築物理学や流体の流れを解析するトレーサー試験などに応用されている\cite{building,trace}．本稿では，$\Omega\subseteq\mathbb{R}^d$をLipschitz連続な境界を持つ有界開集合として，$[0,T]\times\overline{\Omega}\quad(T>0)$上で定義された次の初期値境界値問題を考える．
+例えば$n$個の質点に関する多自由度系の振動と呼ばれる物理現象（空気抵抗がありそれぞれがバネで繋がっている）などは以下のような運動方程式を生じさせる.
+
+\begin{Eqnarray*}
+M\frac{d^2y}{dt^2} + C\frac{dy}{dt} + Ky = y(t)
+\end{Eqnarray*}
+
+
 \begin{equation}\left\{\arraycolsep 0.14em\begin{array}{rcll}
-\vsp\D\frac{\partial u(t,x)}{\partial t}&=&\mathcal{L}u(t,x)&\quad\mbox{in }(0,T]\times\Omega\\
-u(t,x)&=&\phi(x)&\quad\mbox{on }\{0\}\times\overline{\Omega}\\
-u(t,x)&=&\psi(x)&\quad\mbox{on }(0,T]\times\partial \Omega_1\\
-\vsp\D\frac{\partial u(t,x)}{\partial n}&=&\tau_1(x)u(t,x)+\tau_2(x)&\quad\mbox{on }(0,T]\times\partial \Omega_2
+M\frac{d^2y}{dt^2} + C\frac{dy}{dt} + Ky = y(t)
 \end{array}\right.\label{11}\end{equation}
+
+
+$M$は質量行列と呼ばれ質点の質量を対角線上に並べた対角行列, $C$は減衰行列と呼ばれ空気抵抗などの速さと力の関係を表す行列, $K$は剛体行列と呼ばれ変位と力を関係を表す行列である. この運動方程式を解く際には以下の二次固有値問題を解く必要性が生じる.
+
+\begin{Eqnarray*}
+(M\lambda^2 + C\lambda + K)x = 0
+\end{Eqnarray*}
+
+本レポートではこのような行列多項式（行列を係数とする多項式）一般に関する固有値問題について扱う.
+
+\section{背景a}\label{chapint}
+
 ただし，解は，$\mathcal{V}\subseteq L^2((0,T]\times\Omega)$を満たす解空間$\mathcal{V}$で探すものとする．ここで，$\partial \Omega=\partial \Omega_1\cup\partial\Omega_2$であり，$n$は$\partial \Omega$への単位法線ベクトル，$\mathcal{L}$は$\mathcal{V}$上の微分作用素で，$u(t,\cdot)\in L^2(\Omega)\ (^{\forall} t\in(0,T])$に関して線形で$t$に依存しないものである．また，$\phi\in L^2(\overline{\Omega})$，$\psi\in L^2(\partial\Omega_1)$，$\tau_1\in L^{\infty}(\partial\Omega_2)$，$\tau_2\in (L^2(\partial\Omega_2))^{\sharp}$，$(L^2(\partial\Omega_2))^{\sharp}$は，$L^2(\partial\Omega_2)$の双対空間とする．一般的に，
 式(\ref{11})で表される問題の近似解を求めるためには空間方向と時間方向両方に対する離散化を行うことになる\cite[pp.\ 22--27]{fem}．しかし，この方法では時間方向のステップサイズが細かくなるほど，また，$t$が大きくなるほど多くの線形方程式を解かなければならないため，計算コストが増大する．
 
