@@ -59,10 +59,37 @@ $M$は質量行列と呼ばれ質点の質量を対角線上に並べた対角�
 
 本レポートではこのような行列多項式（行列を係数とする多項式）一般に関する固有値問題について扱う.
 
-\section{背景a}\label{chapint}
+\section{問題}\label{chapint}
 
-ただし，解は，$\mathcal{V}\subseteq L^2((0,T]\times\Omega)$を満たす解空間$\mathcal{V}$で探すものとする．ここで，$\partial \Omega=\partial \Omega_1\cup\partial\Omega_2$であり，$n$は$\partial \Omega$への単位法線ベクトル，$\mathcal{L}$は$\mathcal{V}$上の微分作用素で，$u(t,\cdot)\in L^2(\Omega)\ (^{\forall} t\in(0,T])$に関して線形で$t$に依存しないものである．また，$\phi\in L^2(\overline{\Omega})$，$\psi\in L^2(\partial\Omega_1)$，$\tau_1\in L^{\infty}(\partial\Omega_2)$，$\tau_2\in (L^2(\partial\Omega_2))^{\sharp}$，$(L^2(\partial\Omega_2))^{\sharp}$は，$L^2(\partial\Omega_2)$の双対空間とする．一般的に，
-式(\ref{11})で表される問題の近似解を求めるためには空間方向と時間方向両方に対する離散化を行うことになる\cite[pp.\ 22--27]{fem}．しかし，この方法では時間方向のステップサイズが細かくなるほど，また，$t$が大きくなるほど多くの線形方程式を解かなければならないため，計算コストが増大する．
+問題を一般の形で表すと $P(\lambda)$ を$d$次元の$n\times n$の行列を係数とする行列多項式とし
+
+\begin{Eqnarray*}
+P(\lambda)x = 0
+\end{Eqnarray*}
+
+
+をみたすような$\lambda\in\mathbb{C}, x\in\mathbb{C}^n$ を見つける事である. ただし, 本レポートでは行列多項式$P(\lambda)$を一般にdegree-gradedな行列多項式の形に変形する事が出来るという事実を使って[2]
+
+\begin{Eqnarray*}
+P(\lambda) = A_0\Phi_0(\lambda) + A_1\Phi_1(\lambda) + \cdots + A_d\Phi_d(\lambda)\label{11}
+\end{Eqnarray*}
+
+\begin{Eqnarray*}
+\lambda\Phi_j(\lambda) = \alpha\Phi_{j+1}(\lambda) + \beta\Phi_{j}(\lambda) + \gamma\Phi_{j-1}(\lambda)
+\end{Eqnarray*}
+
+\begin{equation}\left\{\arraycolsep 0.14em\begin{array}{rcll}
+\Phi_{-1} \equiv 0\\
+\Phi_{0} \equiv 1
+\end{array}\right.\end{equation}
+
+
+\begin{Eqnarray*}
+\alpha_j = \frac{c_j}{c_{j+1}}
+\end{Eqnarray*}
+
+$c_j$を$\Phi_{j}(\lambda)$の最大次元の項の係数とする.
+
 
 一方，空間方向にのみ離散化を行うと次式が導かれる．
 \begin{equation}\left\{\arraycolsep 0.14em\begin{array}{rcl}

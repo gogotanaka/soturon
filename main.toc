@@ -1,6 +1,6 @@
 \contentsline {chapter}{\numberline {1}序論}{1}
 \contentsline {section}{\numberline {1.1}背景}{1}
-\contentsline {section}{\numberline {1.2}背景a}{1}
+\contentsline {section}{\numberline {1.2}問題}{1}
 \contentsline {section}{\numberline {1.3}記法}{3}
 \contentsline {chapter}{\numberline {2}行列指数関数のためのKrylov部分空間法}{4}
 \contentsline {section}{\numberline {2.1}AE法}{4}
